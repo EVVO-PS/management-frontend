@@ -1,0 +1,50 @@
+.inicio-container {
+    background-image: url('../../../assets/PROYECT.png');
+    background-position: center;
+    height: 100vh;
+  }
+  
+  .contenido {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 30px;
+    color: white;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .btn-ingresar {
+    background-color: #e61b1b;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-ingresar:hover {
+    background-color: #d81b60;
+  }
+
+  .marca-agua {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  p {
+    margin-bottom: 0rem
+  }
+
+  

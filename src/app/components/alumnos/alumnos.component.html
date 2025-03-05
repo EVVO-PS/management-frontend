@@ -1,0 +1,77 @@
+<div class="container mt-4">
+    <h2 class="text-center">Registro de Alumnos</h2>
+    <div class="d-flex justify-content-between mb-4">
+      <button class="btn btn-primary"(click)="verMembresias()">Ver Membresías</button>
+      <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+    <form (ngSubmit)="registrarAlumno()" #alumnoForm="ngForm">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre y Apellido</label>
+        <input type="text" id="nombre" class="form-control" [(ngModel)]="alumno.nombre" name="nombre" required #nombre="ngModel" pattern="[a-zA-Z\s]*">
+        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+          El nombre es requerido.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="documento" class="form-label">Documento</label>
+        <input type="number" id="documento" class="form-control" [(ngModel)]="alumno.documento" name="documento" required #documento="ngModel">
+        <div *ngIf="documento.invalid && (documento.dirty || documento.touched)" class="alert alert-danger">
+          El documento es obligatorio y debe ser un número válido.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="email" id="email" class="form-control" [(ngModel)]="alumno.email" name="email" required email #email="ngModel">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+          Por favor, ingrese un correo electrónico válido.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="number" id="telefono" class="form-control" [(ngModel)]="alumno.telefono" name="telefono">
+      </div>
+  
+      <div class="mb-3">
+        <label for="membresia" class="form-label">Duración de Membresía</label>
+        <select id="membresia" class="form-select" [(ngModel)]="alumno.membresia" name="membresia" required>
+          <option value="30">30 días</option>
+          <option value="60">60 días</option>
+          <option value="90">90 días</option>
+        </select>
+      </div>
+  
+      <div class="mb-3">
+        <label for="fecha_inscripcion" class="form-label">Fecha de Inscripción</label>
+        <input type="date" id="fecha_inscripcion" class="form-control" [(ngModel)]="alumno.fecha_inscripcion" name="fecha_inscripcion" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="calle" class="form-label">Domicilio</label>
+        <input type="text" id="calle" class="form-control" [(ngModel)]="alumno.domicilio.calle" name="calle" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="nombre_contacto" class="form-label">Nombre del Contacto de Emergencia</label>
+        <input type="text" id="nombre_contacto" class="form-control" [(ngModel)]="alumno.telefono_emergencia.nombre_contacto" name="nombre_contacto" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="telefono_emergencia" class="form-label">Teléfono del Contacto de Emergencia</label>
+        <input type="number"  id="telefono_emergencia" class="form-control" [(ngModel)]="alumno.telefono_emergencia.telefono" name="telefono_emergencia" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="relacion" class="form-label">Relación con el Contacto de Emergencia</label>
+        <input type="text" id="relacion" class="form-control" [(ngModel)]="alumno.telefono_emergencia.relacion" name="relacion" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!alumnoForm.form.valid">Registrar</button>
+    </form>
+  </div>
+  
+  <div>
+    <br>
+  </div>

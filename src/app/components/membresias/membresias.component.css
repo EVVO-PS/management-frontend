@@ -1,0 +1,153 @@
+@media (max-width: 576px) {
+    .tabla-responsive {
+      overflow-x: auto;
+    }
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+  }
+  
+  .container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: -3px -2px 19px -4px rgba(0, 0, 0, 0.68)
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border: none;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+  }
+  
+  .table th,
+  .table td {
+    padding: 12px;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+  }
+  
+  .table tbody+tbody {
+    border-top: 2px solid #dee2e6;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .btn {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+  
+    .table th,
+    .table td {
+      padding: 8px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .container {
+      margin-top: 10px;
+      padding: 10px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    .btn {
+      padding: 6px 12px;
+      font-size: 10px;
+    }
+  
+    .table th,
+    .table td {
+      padding: 6px;
+    }
+  
+    .table-responsive {
+      overflow-x: auto;
+    }
+  }
+  
+  .location {
+    width: 44px;
+    height: 32px;
+    margin-right: 5px;
+    position: relative;
+    left: 59%;
+    bottom: 85px;
+    transition: transform 0.3s ease, color 0.3s ease; /* Esto agrega una transición suave */
+    font-size: 20px; 
+  }
+  
+  /* Efecto hover */
+  .location:hover {
+    transform: scale(1.1); /* Aumenta el tamaño del icono en un 10% */
+    color: #007bff; /* Cambia el color del icono (si es posible) */
+    font-size: 22px; /* Aumenta el tamaño del icono */
+  
+  }

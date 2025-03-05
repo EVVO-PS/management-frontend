@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Listado de Alumnos</h2>
+      <button class="btn btn-secondary" (click)="volverAAlumnos()">Volver</button>
+    </div>
+    <div class="d-flex justify-content-end mb-4">
+      <button class="btn btn-secondary me-2" (click)="limpiarBusqueda()">Limpiar Búsqueda</button>
+      <button class="btn btn-primary" (click)="abrirBuscador()">Buscar Alumno</button>
+    </div>
+  
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Nombre</th>
+            <th>Documento</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Fecha de Inscripción</th>
+            <th>Vencimiento de Membresía</th>
+            <th>Días Restantes</th>
+            <th>Días Abonados</th>
+            <th>Acciones</th>
+            
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let alumno of alumnosFiltrados">
+            <td>
+              <span *ngIf="!alumno.editando">{{ alumno.nombre }}</span>
+              <input *ngIf="alumno.editando" [(ngModel)]="alumno.nombre" class="form-control">
+            </td>
+  
+            <td>{{ alumno.documento }}</td>
+  
+            <td>
+              <span *ngIf="!alumno.editando">{{ alumno.email }}</span>
+              <input *ngIf="alumno.editando" [(ngModel)]="alumno.email" class="form-control">
+            </td>
+            <td>
+              <span *ngIf="!alumno.editando">{{ alumno.telefono }}</span>
+              <input *ngIf="alumno.editando" [(ngModel)]="alumno.telefono" class="form-control">
+            </td>
+            <td>
+              <span *ngIf="!alumno.editando">{{ alumno.fecha_inscripcion | date:'dd/MM/yyyy' }}</span>
+              <input *ngIf="alumno.editando" [(ngModel)]="alumno.fecha_inscripcion"
+                (ngModelChange)="actualizarFechaVencimiento(alumno)" type="date" class="form-control">
+            </td>
+            <td>
+              <span *ngIf="!alumno.editando">{{ alumno.membresia_vencimiento | date:'dd/MM/yyyy' }}</span>
+              <span *ngIf="alumno.editando">{{ alumno.membresia_vencimiento | date:'dd/MM/yyyy' }}</span>
+            </td>
+            <td [ngClass]="{
+              'text-success': alumno.diasRestantes > 20,
+              'text-warning': alumno.diasRestantes <= 20 && alumno.diasRestantes > 5,
+              'text-danger': alumno.diasRestantes <= 5
+            }">
+              {{ alumno.diasRestantes }} días
+            </td>
+            <td>
+              <span *ngIf="!alumno.editando">{{ alumno.diasAbonados }}</span>
+              <input *ngIf="alumno.editando" [(ngModel)]="alumno.diasAbonados"
+                (ngModelChange)="actualizarFechaVencimiento(alumno)" type="number" class="form-control">
+            </td>
+            <td>
+              <button *ngIf="!alumno.editando" class="btn btn-primary btn-sm me-2 mb-2"
+                (click)="habilitarEdicion(alumno)">Editar</button>
+              <button *ngIf="alumno.editando" class="btn btn-success btn-sm me-2 mb-2"
+                (click)="guardarCambios(alumno)">Guardar</button>
+              <button *ngIf="alumno.editando" class="btn btn-secondary btn-sm me-2 mb-2"
+                (click)="cancelarEdicion(alumno)">Cancelar</button>
+              <button class="btn btn-danger btn-sm" (click)="darDeBaja(alumno)">Dar de baja</button>
+              <button class="location" style="border: none; background: transparent;" (click)="mostrarContactoEmergencia(alumno)">
+                <i class="fa-solid fa-location-dot"></i>            
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="contactoEmergenciaModal" tabindex="-1" aria-labelledby="contactoEmergenciaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contactoEmergenciaModalLabel">Información de Contacto de Emergencia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Nombre del Contacto:</strong> {{ contactoEmergencia?.nombre_contacto }}</p>
+          <p><strong>Teléfono de emergencia:</strong> {{ contactoEmergencia?.telefono }}</p>
+          <p><strong>Relación:</strong> {{ contactoEmergencia?.relacion }}</p>
+          <p><strong>Domicilio del cliente:</strong> {{ contactoEmergencia?.domicilio?.calle }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div>
+    <br>
+  </div>
